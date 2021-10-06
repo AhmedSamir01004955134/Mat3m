@@ -1,0 +1,176 @@
+
+
+  <section class="section">
+
+    <div class="xcontainer">
+      <div class="xrow">
+        <!-- Products Section -->
+        <div class="products">
+          <div class="product inner-shadow" *ngFor="let item of FiltarProduct " (click)="addItem(item)">
+           <img src="{{item.img}}" /> 
+            <span>{{item.name}} </span>
+
+          </div>
+
+
+
+        </div>
+
+
+        <!-- Right Container -->
+
+        <div class="xright">
+          <!-- Categories Section -->
+          <div class="categories">
+            <div class="category" (click)="FiltarProduct=products">
+
+              All Product
+            </div>
+            <div class="category" *ngFor="let item of Catogres" (click)="productChange(item.id)">
+              <img src="{{item.img}}"/>
+              <span>{{item.name}}</span>
+              
+            </div>
+
+
+          </div>
+
+
+          <!-- Buttons To Select Value -->
+
+          <div class="buttons">
+            <div class="pcollapse">
+              <i class="fas fa-plus"></i>
+            </div>
+            <!--<div class="order-button" data-type="Take Away">
+    <div class="overlay"></div>
+    <span> Take Away</span>
+  </div>-->
+
+
+            <div (click)="toogleDelivery()" class="order-button delivery" data-type="Delivery">
+              <div class="overlay"></div>
+              <span>Delivery</span>
+            </div>
+            <div class="order-button tables" data-type="Tabels">
+              <div class="overlay"></div>
+              <span>Tabels</span>
+            </div>
+            <div class="order-button Order" data-type="Tabels" [routerLink]="['/app-sealse-bill']">   
+              <div class="overlay"></div>
+              <span>All Order</span>
+            </div>
+          </div>
+          <div class="status outer-shadow">
+            <div class="text">
+              <div> Product Numper : <span class="type"> {{selesDetalis.length}}</span></div>
+              <div> Name Dlavary : {{model.DlaveryName}} <span class="number"></span></div>
+            </div>
+            <div class="clear-container">
+              <div class="clear" (click)="clearDeteals()"><i class="fas fa-trash"></i> Clear</div>
+              <div class="save" (click)="SaveSeals(selesDetalis)">
+                <i class="fas fa-trash"> Save </i>
+                <!--<a [routerLink]="['/app-sealse-bill']">
+                </a>-->
+              </div>
+            </div>
+          </div>
+          <!-- Table To Display Values -->
+          <div class="result">
+            <div class="rows">
+              <div class="row title">
+                <div>Items</div>
+                <div>Quantity</div>
+                <div>Price</div>
+                <div>Total</div>
+              </div>
+              <!-- Loop Row Value -->
+              <div class="row " *ngFor="let item of selesDetalis;index as i">
+                <div class="item">{{item.product.name}}</div>
+                <div class="input numbet">
+                  <div class="row-up" (click)="increase(item)">
+                    <i class="fas fa-arrow-up"></i>
+                  </div>
+                  <div class="row-down" (click)="dncrease(item)">
+                    <i class="fas fa-arrow-down"></i>
+                  </div>
+                  <input type="number" placeholder="{{item.quantity}}">
+                </div>
+                <div class="price"> {{item.product.price}}</div>
+                <div class="total"> {{item.totale}}</div>
+                <div class="delete" (click)="removProduct(i)"><i class="fas fa-trash"></i></div>
+              </div>
+            </div>
+          </div>
+          <!-- Total Value -->
+          <div class="output">
+            <div class="o-total">Total : <span>{{model.Totale}}</span></div>
+            <div class="discount"><span>Discount : </span><span><input type="number" [(ngModel)]="model.Discount" (change)="calculateDetallis()"></span></div>
+            <div class="Cash">Cash :{{model.Cash}}  <span></span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- Draggable Icon -->
+    <div class="draggable">
+
+      <div id="item" class="active">
+        <i class="fas fa-camera"></i>
+        <i class="fas fa-music"></i>
+        <i class="fas fa-video"></i>
+        <i class="fas fa-download"></i>
+        <label for="click">
+          <span class="fas fa-plus"></span>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pop Up Multi-->
+  <div class="multi-pop-up">
+    <div class="close hover-in-shadow" (click)="toogleDelivery()"><i class="fas fa-times"></i></div>
+    <div class="content">
+      <div class="category" data-target="meat-types" *ngFor="let item of Dlevary" (click)="changDlevary(item)">
+        {{item.name}}
+      </div>
+
+
+    </div>
+  </div>
+  <!-- Pop Up Table-->
+  <div class="tabels-popup">
+    <div class="close hover-in-shadow"><i class="fas fa-times"></i></div>
+    <div class="content">
+      <div class="t-number">1</div>
+      <div class="t-number">2</div>
+      <div class="t-number">3</div>
+      <div class="t-number">4</div>
+      <div class="t-number">5</div>
+      <div class="t-number">6</div>
+      <div class="t-number">7</div>
+      <div class="t-number">8</div>
+      <div class="t-number">9</div>
+      <div class="t-number">10</div>
+      <div class="t-number">11</div>
+      <div class="t-number">12</div>
+      <div class="t-number">13</div>
+      <div class="t-number">14</div>
+      <div class="t-number">15</div>
+      <div class="t-number">16</div>
+      <div class="t-number">17</div>
+      <div class="t-number">18</div>
+      <div class="t-number">19</div>
+      <div class="t-number">20</div>
+      <div class="t-number">21</div>
+    </div>
+  </div>
+  <div class="ordersNumber">
+    <div>Invoice No  <span>21</span></div>
+    <div>Order No  <span>15</span></div>
+  </div>
+
+
+  <script src="./post.js"></script>
+
+
